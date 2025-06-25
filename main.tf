@@ -1,9 +1,9 @@
 module "jenkins_terraform" {
-  source = "./modules"
+  source = "./module"
 
   aws_region    = "ap-south-1"
   agent_count   = 2
-  os_type       = "ubuntu" # or "amazon-linux"
+  os_type       = "ubuntu" # "ubuntu or amazon-linux"
   instance_type = "t2.micro"
 }
 
