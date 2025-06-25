@@ -11,7 +11,7 @@ variable "os_type" {
 }
 
 variable "instance_type" {
-  type = list(string)
+  type = string
 }
 
 

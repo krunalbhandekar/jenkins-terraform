@@ -6,9 +6,4 @@ data "aws_ami" "machine" {
     name   = "name"
     values = local.img_names
   }
-
-  filter {
-    name   = "instance-type"
-    values = var.instance_type
-  }
 }

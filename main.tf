@@ -4,7 +4,7 @@ module "jenkins_terraform" {
   aws_region    = "ap-south-1"
   agent_count   = 2
   os_type       = "ubuntu" # or "amazon-linux"
-  instance_type = ["t2.micro"]
+  instance_type = "t2.micro"
 }
 
 output "print_ami_id" {

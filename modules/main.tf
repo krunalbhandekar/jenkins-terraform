@@ -5,6 +5,7 @@ provider "aws" {
 resource "aws_instance" "terraform_master" {
   ami             = data.aws_ami.machine.id
   key_name        = aws_key_pair.jenkins_key.key_name
+  instance_type   = var.instance_type
   security_groups = [aws_security_group.jenkins_sg.id]
 
   user_data = file("${path.module}/scripts/${var.os_type}/jenkins_master.sh")
@@ -18,6 +19,7 @@ resource "aws_instance" "terraform_agent" {
   count           = var.agent_count
   ami             = data.aws_ami.machine.id
   key_name        = aws_key_pair.jenkins_key.key_name
+  instance_type   = var.instance_type
   security_groups = [aws_security_group.jenkins_sg.id]
 
   user_data = file("${path.module}/scripts/${var.os_type}/jenkins_agent.sh")
