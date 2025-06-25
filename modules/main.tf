@@ -25,6 +25,6 @@ resource "aws_instance" "jenkins_agent" {
   user_data = file("${path.module}/scripts/${var.os_type}/jenkins_agent.sh")
 
   tags = {
-    Name = "terraform-agent-${count.index + 1}"
+    Name = "jenkins -agent-${count.index + 1}"
   }
 }
