@@ -3,10 +3,10 @@ provider "aws" {
 }
 
 resource "aws_instance" "terraform_master" {
-  ami             = data.aws_ami.machine.id
-  key_name        = aws_key_pair.jenkins_key.key_name
-  instance_type   = var.instance_type
-  security_groups = [aws_security_group.jenkins_sg.id]
+  ami                    = data.aws_ami.machine.id
+  key_name               = aws_key_pair.jenkins_key.key_name
+  instance_type          = var.instance_type
+  vpc_security_group_ids = [aws_security_group.jenkins_sg.id]
 
   user_data = file("${path.module}/scripts/${var.os_type}/jenkins_master.sh")
 

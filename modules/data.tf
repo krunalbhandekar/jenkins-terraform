@@ -7,3 +7,7 @@ data "aws_ami" "machine" {
     values = local.img_names
   }
 }
+
+data "aws_vpc" "default" {
+  default = true
+}
