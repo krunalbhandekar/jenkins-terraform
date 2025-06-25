@@ -2,7 +2,7 @@ provider "aws" {
   region = var.aws_region
 }
 
-resource "aws_instance" "terraform_master" {
+resource "aws_instance" "jenkins_master" {
   ami                    = data.aws_ami.machine.id
   key_name               = aws_key_pair.jenkins_key.key_name
   instance_type          = var.instance_type
@@ -11,11 +11,11 @@ resource "aws_instance" "terraform_master" {
   user_data = file("${path.module}/scripts/${var.os_type}/jenkins_master.sh")
 
   tags = {
-    Name = "terraform-master"
+    Name = "jenkins-master"
   }
 }
 
-resource "aws_instance" "terraform_agent" {
+resource "aws_instance" "jenkins_agent" {
   count                  = var.agent_count
   ami                    = data.aws_ami.machine.id
   key_name               = aws_key_pair.jenkins_key.key_name

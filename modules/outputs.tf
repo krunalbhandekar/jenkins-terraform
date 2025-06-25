@@ -5,11 +5,11 @@ output "ami_id" {
 
 output "jenkins_master_public_ip" {
   description = "Public IP of Jenkins master instances"
-  value       = aws_instance.terraform_master.public_ip
+  value       = aws_instance.jenkins_master.public_ip
 }
 
 output "jenkins_agent_public_ips" {
   description = "Public IPs of all Jenkins agent instances"
-  value       = [for agent in aws_instance.terraform_agent : agent.public_ip]
+  value       = [for agent in aws_instance.jenkins_agent : agent.public_ip]
 }
 
