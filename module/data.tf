@@ -1,7 +1,3 @@
-data "http" "my_ip" {
-  url = "http://checkip.amazonaws.com/"
-}
-
 data "aws_ami" "machine" {
   most_recent = true
   owners      = local.img_owners
