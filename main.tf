@@ -1,10 +1,19 @@
 module "jenkins_terraform" {
   source = "./module"
 
-  aws_region    = "ap-south-1"
-  agent_count   = 2
-  os_type       = "ubuntu" # "ubuntu or amazon-linux"
-  instance_type = "t2.micro"
+  aws_region           = "ap-south-1"
+  os_type              = "ubuntu" # "ubuntu or amazon-linux"
+  master_instance_type = "t2.micro"
+  agents = [
+    {
+      name          = "maven"
+      instance_type = "t2.micro"
+    },
+    {
+      name          = "sonarqube"
+      instance_type = "t2.medium"
+    }
+  ]
 }
 
 output "print_ami_id" {

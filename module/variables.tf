@@ -2,15 +2,21 @@ variable "aws_region" {
   type = string
 }
 
-variable "agent_count" {
-  type = number
+
+variable "agents" {
+  description = "List of agent configurations"
+  type = list(object({
+    name          = string
+    instance_type = string
+  }))
 }
+
 
 variable "os_type" {
   type = string
 }
 
-variable "instance_type" {
+variable "master_instance_type" {
   type = string
 }
 

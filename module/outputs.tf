@@ -8,8 +8,12 @@ output "jenkins_master_public_ip" {
   value       = aws_instance.jenkins_master.public_ip
 }
 
+
 output "jenkins_agent_public_ips" {
   description = "Public IPs of all Jenkins agent instances"
-  value       = [for agent in aws_instance.jenkins_agent : agent.public_ip]
+  value = {
+    for index, instance in aws_instance.jenkins_agent :
+    var.agents[index].name => instance.public_ip
+  }
 }
 
